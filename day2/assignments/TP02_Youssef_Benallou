@@ -1,0 +1,46 @@
+#include<stdio.h>
+int main()
+{
+// Exercice 1 :
+	printf("please choose two numbers : \n");
+	float a,b;
+	scanf("%f %f",&a,&b);
+	printf("%.3f \n",a*b);
+
+
+// Exercice 2 :
+	int m,n,p;
+	printf("please choose two numbers : \n");
+	scanf("%d %d",&m,&n);
+	printf("%d %d \n",m,n);
+	p=m;
+	m=n;
+	n=p;
+	printf("%d %d \n",m,n);
+
+// Exercice 3 :
+	int   i =  8;
+	int   j =  5;
+	float x =  0.005f;
+	float y = -0.01f;
+	char  c = 'c';
+	char  d = 'd';
+	
+	// c repsents 99 and d represents 100 (ascii code decimal)
+	// 0 represents FALSE and 1 represents TRUE
+	printf("%d \n",(3*i - 2*j)%(2*d - c));
+	printf("%d \n",2*((i/5) + (4*(j-3))%(i + j - 2)));
+	printf("%d \n",i <= j);
+	printf("%d \n",j != 6);
+	printf("%d \n",c == 99);
+	printf("%d \n",5*(i + j) < 'c');
+	printf("%d \n",(i > 0) && (j < 5)); // && represents "and" operator
+	printf("%d \n",(i > 0) || (j < 5)); // || reprensts "or" operator
+	printf("%d \n",(x > y) && (i > 0) || (j < 5));
+	printf("%d \n",(x > y) && (i > 0) && (j < 5));
+	
+// Exercice 4 :
+	// c += a > 0 && a <= 15 ? ++a : a/b; if c+a>0 AND (a<15 or a=15) :increment a,a/b otherwise
+	// a > 30 ? b = 11 : c = 100; if a>30 : b=11,c=100 otherwise
+	return 0;
+}
