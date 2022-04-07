@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+//Notes//
+/* 
+I chose to represent the phone numbers as a string and not int.
+The "0" in the beginning who was the cause of problems.
+There was two solutions: 
+-The 0 is automatically added (Not smooth during the input).
+-We represent phone numbers as strings.
+*/
+
+//struct//
+
+struct contact{
+    char Fullname[20];
+    char phonenumber[10];
+    unsigned id;
+
+};
+typedef struct contact contact;
+
+struct contactbook{
+	contact *tete;
+};
+typedef struct contactbook contactbook;
+
+//Prototypes//
+contactbook create();
+void ADD_contact(contactbook*);
+void LIST_contact(contactbook);
+
+
+//Functions//
+contactbook create(){
+	contactbook temp;
+	temp.tete=(contact*)malloc(8*sizeof(contact));
+	return temp;
+}
+
+void ADD_contact(contactbook *CB){
+	contact temp;
+	printf("\nplease type the full name : ");
+	scanf("%s",&temp.Fullname);
+	printf("\nplease type the phone number : ");
+	scanf("%s",&temp.phonenumber);
+	
+	unsigned i=0;
+	while ((i!=8)&&(CB->tete[i].id!=0))
+		i++;
+	if (i==8)
+		printf("ERROR! The contactbook you chose is Full!\n");
+	else{
+		temp.id=i+1;
+		CB->tete[i]=temp;
+	}
+	return;
+}
+
+void LIST_contact(contactbook CB){
+	unsigned i=0;
+	printf("Fullname\tphone number\tid\n");
+	while (CB.tete[i].id!=0){
+		printf("%s\t%s\t%u\n",CB.tete[i].Fullname,CB.tete[i].phonenumber,CB.tete[i].id);
+		i++;
+		if (i==8)
+			return;
+	}
+	return;
+}
+
+void main(){
+contactbook CB=create();
+ADD_contact(&CB);
+ADD_contact(&CB);
+ADD_contact(&CB);
+LIST_contact(CB);
+}

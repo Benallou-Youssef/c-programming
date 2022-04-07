@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+//Structs
+struct complex{
+    int a; //real
+    int b; //imaginary
+
+};
+typedef struct complex complex;
+
+//Prototypes
+void printcomplex(complex );
+complex sumcomplex(complex,complex);
+complex mulcomplex(complex,complex);
+complex divcomplex(complex,complex);
+complex modulcomplex(complex,complex);
+//Functions
+
+void printcomplex(complex x){
+	printf("%i %ii\n",x.a,x.b);
+}
+
+
+complex sumcomplex(complex x,complex y){
+	complex z;
+	z.a=x.a+y.a;
+	z.b=x.b+y.b;
+	return z;
+}
+
+
+complex mulcomplex(complex x,complex y){
+	complex z;
+	z.a=x.a*y.a -x.b*y.b;
+	z.b=x.a*y.b + x.b*y.a;
+	return z;
+}
+
+
+complex divcomplex(complex x,complex y){
+	complex z;
+	z.a=(x.a*y.a + x.b*y.b)/(y.a*y.a + y.b*y.b);
+	z.b=(x.b*y.a - x.a*y.b)/(y.a*y.a + y.b*y.b);
+	return z;
+}
+
+
+complex modulcomplex(complex x,complex y){
+	complex z;
+	z.a=x.a-mulcomplex(y,divcomplex(x,y)).a;
+	z.b=x.b-mulcomplex(y,divcomplex(x,y)).b;
+	return z;
+}
+
+
+void main(){
+complex m,n,c;
+m.a=8;
+m.b=-4;
+n.a=4;
+n.b=2;
+c.a=1;
+c.b=-1;
+printcomplex(m);
+printcomplex(n);
+printcomplex(sumcomplex(m,n));
+printcomplex(mulcomplex(m,n));
+printcomplex(divcomplex(m,n));
+printcomplex(mulcomplex(n,c));
+printcomplex(modulcomplex(m,n));
+return;
+}
+

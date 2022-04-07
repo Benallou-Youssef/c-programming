@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+//Structs
+struct intstring{
+	int number;
+	char* word;
+};
+typedef struct intstring intstring;
+
+
+//Prototypes
+void printintstring(intstring);
+void swapintstring(intstring*,intstring*);
+
+//Functions 
+void printintstring(intstring x){
+	printf("int=%i\tstr=%s\n",x.number,x.word);
+	return;
+}
+
+void swapintstring(intstring *x,intstring *y){
+	int tempnumber=x->number;
+	char* tempword=x->word;
+	
+	x->number=y->number;
+	x->word=y->word;
+	
+	y->number=tempnumber;
+	y->word=tempword;
+	
+	return;
+}
+
+void main(){
+	intstring m;
+	m.number=0;
+	m.word="hello";
+	intstring n;
+	n.number=1;
+	n.word="world!";
+	printintstring(m);
+	printintstring(n);
+	swapintstring(&m,&n);
+	printintstring(m);
+	printintstring(n);
+	return;
+}
